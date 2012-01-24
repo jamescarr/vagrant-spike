@@ -37,8 +37,9 @@ Vagrant::Config.run do |config|
   # config.vm.share_folder "v-data", "/vagrant_data", "../data"
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "puppetmanifests"
-    puppet.manifest_file = "newbox.pp"
-    puppet.module_path = "modules"
+    puppet.manifest_file  = "newbox.pp"
+    puppet.module_path    = "modules"
+    puppet.options        = "--verbose --debug"
   end
   # Enable provisioning with Puppet stand alone.  Puppet manifests
   # are contained in a directory path relative to this Vagrantfile.
