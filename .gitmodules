@@ -1,3 +1,9 @@
 [submodule "modules/mongodb"]
 	path = modules/mongodb
 	url = git://github.com/portertech/puppet-mongodb.git
+[submodule "modules/puppetlabs-tomcat"]
+	path = modules/puppetlabs-tomcat
+	url = https://github.com/puppetlabs/puppetlabs-tomcat.git
+[submodule "modules/puppet-tomcat"]
+	path = modules/puppet-tomcat
+	url = https://github.com/camptocamp/puppet-tomcat.git

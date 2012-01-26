@@ -1,8 +1,6 @@
-import 'puppet-rvm'
 class lucid32 {
   include mongodb
-  include rvm::system
-
+  include tomcat
 
   group { 'puppet': ensure => 'present' }
   exec { 'apt-get update':
@@ -13,7 +11,10 @@ class lucid32 {
     ensure    => present,
     require => Exec['apt-get update']
   }
-
+  tomcat::instance {"myapp":
+    ensure      => present,
+    http_port => "8080",
+  }
   package { ["vim", "zsh","mercurial"]:
     ensure    => present,
     require => Exec['apt-get update']
@@ -40,11 +41,6 @@ class lucid32 {
   file { '/etc/motd':
      content => "Welcome to Arakis"
 
-  }
-  rvm_system_ruby {
-    'ruby-1.9.2-p290':
-      ensure => 'present',
-      default_use => true;
   }
 }
 
