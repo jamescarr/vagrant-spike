@@ -1,6 +1,5 @@
 class lucid32 {
   include mongodb
-  include tomcat
 
   group { 'puppet': ensure => 'present' }
   exec { 'apt-get update':
