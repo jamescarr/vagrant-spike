@@ -11,10 +11,6 @@ class lucid32 {
     ensure    => present,
     require => Exec['apt-get update']
   }
-  tomcat::instance {"myapp":
-    ensure      => present,
-    http_port => "8080",
-  }
   package { ["vim", "zsh","mercurial"]:
     ensure    => present,
     require => Exec['apt-get update']
@@ -25,18 +21,6 @@ class lucid32 {
     require => Package["apache2"],
   }
 
-  File {
-    owner => 'root',
-    group => 'root',
-    mode => '0644'
-  }
-
-  file { '/var/www':
-    ensure => link,
-    target => '/vagrant',
-    force => true,
-    require => Package['apache2']
-  }
 
   file { '/etc/motd':
      content => "Welcome to Arakis"
